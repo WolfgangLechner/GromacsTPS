@@ -1,0 +1,64 @@
+Change Log  
+
+07.Oct 2010 wolf
+- option in stablestates added : DIR can be x,y,z or abs 
+  it defines which gdist coordinate is read
+ 
+- option in runoptions added: qsubwalltime
+  is a string an can be eg. 100:00:00
+  
+20.Oct 2010 wolf
+
+- Arbitrary order parameters can be introduced in the 
+  option orderparameters.txt. Two options are possible:
+  
+  dist x -1 -0.1 0.1 1 
+  
+  This defines a distance between two indcies as order parameter
+  dist1 and dist2 are given in runoptions. The second parameter
+  defines the direction (can be x,y,z, or abs). The next parameters
+  define the stable states A and B in the following order minA,maxA,
+  minB,maxB.
+  
+  custom customPlugin
+  
+  This defines a custom order parameter. The second parameter is the
+  name of the python file in the custom directory. This particular 
+  example would require that the file ./custom/customPlugin.py exists.
+  customPlugin has to define a class named TCustomOrderParameter(object)
+  which provides the functions isPathInState and getFullTrajectory.
+  
+  class TCustomOrderParameter(object):
+    def __init__(self):
+      self.A = [-4.0,-0.6]
+      self.B = [0.6,4.0]
+  	   
+  	def isPathInState(self,path,log):
+      ...
+      
+      return finishedState,isInState
+  	
+  	
+  	def getFullTrajectory(self,fpath,bpath,fdir,bdir,log):
+  	  ...
+  	  
+  	  return traj
+  		
+09. Nov 2010 wolf
+
+- gromacspostfix: This option can be set to eg. "_f" in order to allow for mdrun_f instead of mdrun
+
+12. Nov 2010 wolf
+
+- dynamicshooting: added option "dynamicshooting" in kerneloptions.txt in order to allow for mpi jobs
+over multiple nodes Jeroen is going to implement
+
+10.Dec 2010 wolf
+
+- option "shootfrominterface" added. If this is 1 then the trajectories are shot from the interface
+and not from a random point along the trajectory. 
+
+01. July 2011 wolf
+
+- reversepaths are started now in the shooting queue as soon as the todolist is finished but some jobs
+are still running. 
