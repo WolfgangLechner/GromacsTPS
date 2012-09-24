@@ -61,4 +61,8 @@ and not from a random point along the trajectory.
 01. July 2011 wolf
 
 - reversepaths are started now in the shooting queue as soon as the todolist is finished but some jobs
-are still running. 
+are still running.
+
+24. Sept 2012 wolf
+
+- use a absolute time for shooting points 
