@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
     name = "pygromacstps",
     packages = ["pygromacstps","pygromacstps.orderparameter"],
-    package_dir = {"pygromacstps": "src/pygromacstps"},
+    package_dir = {"pygromacstps": "pygromacstps"},
     version = "0.0.1",
     description = "Python Gromacs Path Sampling",
     author = "Wolfgang Lechner",
